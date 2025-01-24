@@ -1,0 +1,12 @@
+{
+    "apps": [
+        {
+            "name": "landing-page",
+            "script": "/app/web/server.js",
+            "cwd": "/app/web",
+            "exec_mode": "cluster",
+            "instances": 2,
+            "port": 3010
+        }
+    ]
+}

@@ -1,0 +1,245 @@
+{
+
+  "loader": {
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" width=\"40\" height=\"40\" class=\"shape-rendering-auto display-block background-transparent\">\n  <g>\n    <path class=\"transform-scale-76 transform-origin-center\" stroke-linecap=\"round\" d=\"M24.3 30C11.4 30 5 43.3 5 50s6.4 20 19.3 20c19.3 0 32.1-40 51.4-40 C88.6 30 95 43.3 95 50s-6.4 20-19.3 20C56.4 70 43.6 30 24.3 30z\" stroke-dasharray=\"138.55802124023438 118.03090698242187\" stroke-width=\"6\" stroke=\"#bed804\" fill=\"none\">\n      <animate values=\"0;256.58892822265625\" keytimes=\"0;1\" dur=\"1.0638297872340425s\" repeatCount=\"indefinite\" attributeName=\"stroke-dashoffset\"></animate>\n    </path>\n  </g>\n</svg>"
+  },
+
+  "header": {
+    "logo": {
+      "src": "/mint.png",
+      "alt": "Mintlify Logo",
+      "width": 32,
+      "height": 32,
+      "text": "Mintlify"
+    },
+    "navigation": [
+      { "name": "Documentation", "href": "#" },
+      { "name": "Resources", "href": "#" },
+      { "name": "Request Preview", "href": "#" },
+      { "name": "Careers", "href": "#" },
+      { "name": "Pricing", "href": "#" }
+    ],
+    "darkModeToggle": true
+  },
+  "footer": {
+    "logo": {
+      "src": "/mint.png",
+      "alt": "Mintlify Logo",
+      "width": 32,
+      "height": 32,
+      "text": "Mintlify"
+    },
+    "sections": [
+      {
+        "title": "Documentation",
+        "links": [
+          { "name": "Getting Started", "href": "#" },
+          { "name": "Components", "href": "#" },
+          { "name": "API Playground", "href": "#" },
+          { "name": "Pricing", "href": "#" },
+          { "name": "Resources", "href": "#" }
+        ]
+      },
+      {
+        "title": "Company",
+        "links": [
+          { "name": "Careers", "href": "#" },
+          { "name": "Blog", "href": "#" },
+          { "name": "Public Roadmap", "href": "#" },
+          { "name": "Security", "href": "#" },
+          { "name": "Legal", "href": "#" }
+        ]
+      },
+      {
+        "title": "Resources",
+        "links": [
+          { "name": "Customers", "href": "#" },
+          { "name": "Enterprise", "href": "#" },
+          { "name": "Request Preview", "href": "#" },
+          { "name": "Integrations", "href": "#" },
+          { "name": "Templates", "href": "#" },
+          { "name": "Wall of Love", "href": "#" }
+        ]
+      }
+    ],
+    "copyright": {
+      "text": "© {year} Mintlify, Inc. All rights reserved."
+    }
+  },
+  "pricingToggle": {
+    "monthlyBilling": {
+      "text": "Monthly Billing",
+      "labelClass": "text-black font-semibold dark:text-white",
+      "isSelected": false
+    },
+    "yearlyBilling": {
+      "text": "Yearly Billing",
+      "labelClass": "text-gray-500 dark:text-gray-400",
+      "isSelected": false
+    },
+    "discount": {
+      "text": "-20%",
+       "labelClass": "text-white font-semibold bg-black py-1 px-2 rounded-md dark:bg-[#3F3F3F]"
+    },
+    "toggleButton": {
+      "enabled": true,
+      "label": "Toggle to switch between monthly/yearly billing"
+    }
+  },
+  "pricingPage": {
+    "heading": "Pricing on your terms",
+    "subheading": "Get started for free. Upgrade as you grow.",
+    "buttonToggle": {
+      "isYearly": false
+    },
+    "plans": [
+      {
+        "name": "Hobby",
+        "price": 0,
+        "billing": "/month",
+        "description": "Free for developers (or everyone) getting started with Mintlify",
+        "buttonText": "Get started",
+        "buttonVariant": "secondary",
+        "features": [
+          { "name": "Beautiful out of the box", "included": true },
+          { "name": "Single editor", "included": true },
+          { "name": "Custom domain", "included": true },
+          { "name": "Built-in components library", "included": true },
+          { "name": "In-app search", "included": true },
+          { "name": "API playground", "included": true },
+          { "name": "Git Sync", "included": true },
+          { "name": "OpenAPI generated pages", "included": true }
+        ]
+      },
+      {
+        "name": "Pro",
+        "price": 150,
+        "billing": "/month",
+        "popular": true,
+        "description": "Everything in Hobby, plus",
+        "buttonText": "Try for free",
+        "buttonVariant": "primary",
+        "addons": [
+          { "name": "Deployments", "price": "$100/mo", "enabled": false },
+          { "name": "Custom CSS", "price": "$100/mo", "enabled": false }
+        ],
+        "features": [
+          { "name": "Five editors", "included": true },
+          { "name": "AI chat responses", "included": true, "details": "250 (+$0.15 for each question after)" },
+          { "name": "Advanced analytics", "included": true },
+          { "name": "Chat analytics", "included": true },
+          { "name": "Custom subpaths/docs", "included": true },
+          { "name": "User feedback", "included": true },
+          { "name": "Workflow API access", "included": true }
+        ]
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom Pricing",
+        "description": "For organizations with custom needs and advanced security",
+        "buttonText": "Contact us",
+        "buttonVariant": "secondary",
+        "features": [
+          { "name": "Everything in Pro, plus", "included": true },
+          { "name": "End-user authentication", "included": true },
+          { "name": "Password-protection", "included": true },
+          { "name": "SSO login", "included": true },
+          { "name": "Remove Mintlify branding", "included": true },
+          { "name": "99.99% SLA", "included": true },
+          { "name": "Advanced Support", "included": true }
+        ]
+      }
+    ]
+  },
+"pricingTable": {
+  "plans": [
+    { 
+      "name": "Hobby", 
+      "color": "text-gray-900", 
+      "buttonText": "Get started", 
+      "buttonLink": "https://mintlify.com/start", 
+      "buttonVariant": "default" 
+    },
+    { 
+      "name": "Pro", 
+      "color": "text-gray-900", 
+      "buttonText": "Try for free", 
+      "buttonLink": "https://mintlify.com/start", 
+      "buttonVariant": "default", 
+      "popular": true 
+    },
+    { 
+      "name": "Enterprise", 
+      "color": "text-gray-900", 
+      "buttonText": "Contact us", 
+      "buttonLink": "#", 
+      "buttonVariant": "secondary" 
+    }
+  ],
+      "categories": [
+        {
+          "name": "Customization",
+          "icon": {
+            "type": "customization",
+            "src": "/svgicons/custom.svg"
+          },
+          "features": [
+            { "name": "Beautiful styling out of the box", "hobby": true, "pro": true, "enterprise": true },
+            { "name": "Built-in components library", "hobby": true, "pro": true, "enterprise": true },
+            { "name": "Remove Mintlify branding", "hobby": false, "pro": false, "enterprise": true },
+            { "name": "Custom global CSS and JS", "hobby": false, "pro": true, "enterprise": true, "details": "$100/mo" }
+          ]
+        },
+        {
+          "name": "Features",
+          "icon": {
+            "type": "features",
+            "src": "/svgicons/features.svg"
+          },
+          "features": [
+            { "name": "Git Sync", "hobby": true, "pro": true, "enterprise": true },
+            { "name": "OpenAPI generated pages", "hobby": true, "pro": true, "enterprise": true },
+            { "name": "API playground", "hobby": true, "pro": true, "enterprise": true },
+            { "name": "Workflow API access", "hobby": false, "pro": true, "enterprise": true },
+            { "name": "AI chat responses", "hobby": false, "pro": true, "enterprise": true, "details": "250 questions included, $0.15/question after" },
+            { "name": "In-app search", "hobby": true, "pro": true, "enterprise": true },
+            { "name": "Chat analytics", "hobby": false, "pro": true, "enterprise": true },
+            { "name": "User feedback", "hobby": false, "pro": true, "enterprise": true },
+            { "name": "Third-party integrations", "hobby": false, "pro": false, "enterprise": true },
+            { "name": "White-glove migrations", "hobby": false, "pro": false, "enterprise": true },
+            { "name": "Premium Slack support", "hobby": false, "pro": false, "enterprise": true },
+            { "name": "Enterprise Support", "hobby": false, "pro": false, "enterprise": true }
+          ]
+        },
+        {
+          "name": "Security",
+          "icon": {
+            "type": "security",
+            "src": "/svgicons/security.svg"
+          },
+          "features": [
+            { "name": "End-user authentication", "hobby": false, "pro": false, "enterprise": true },
+            { "name": "Single sign-on (SSO)", "hobby": false, "pro": false, "enterprise": true },
+            { "name": "99.99% SLA", "hobby": false, "pro": false, "enterprise": true },
+            { "name": "Password protection", "hobby": false, "pro": false, "enterprise": true }
+          ]
+        }
+      ]
+    
+    },
+  
+  "logoSlider": {
+      "heading": "Powering experiences from next-gen startups to enterprises",
+      "logos": [
+        { "src": "./assets/elevenlabs.svg", "alt": "ElevenLabs" },
+        { "src": "./assets/zapier.svg", "alt": "Zapier" },
+        { "src": "./assets/fidelity.svg", "alt": "Fidelity" },
+        { "src": "./assets/cerebras.svg", "alt": "Cerebras" },
+        { "src": "./assets/perplexity.svg", "alt": "Perplexity" },
+        { "src": "./assets/anthropic.svg", "alt": "Anthropic" },
+        { "src": "./assets/autodesk.svg", "alt": "Autodesk" },
+        { "src": "./assets/sardine.svg", "alt": "Sardine" }
+      ]
+    }  
+  
+}

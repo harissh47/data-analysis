@@ -1,0 +1,21 @@
+.githubIcon {
+  background: center/contain url('./assets/github.svg');
+}
+ 
+.googleIcon {
+  background: center/contain url('./assets/google.svg');
+}
+ 
+.background {
+  background-image: url('./assets/background.jpg');
+  background-size: cover;
+  height: 100vh;
+}
+
+/* .dark .background {
+  background-image: url('./assets/dark_theme_bg.jpg');
+} */
+ 
+.text-primary-600 {
+  color: #1C274C;
+}
