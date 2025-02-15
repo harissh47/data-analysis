@@ -5,6 +5,7 @@ from upload import upload  # Ensure this is used if needed
 from view_csv import view_csv
 from ai import analyze_data, chatbot
 from flask_cors import CORS
+from authentication import send_otp
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -37,6 +38,10 @@ def signup_route():
 @app.route('/register', methods=['POST'])
 def register_route():
     return register()
+
+@app.route('/send_otp', methods=['POST'])
+def send_otp_route():
+    return send_otp(request.json.get('email'))
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
