@@ -76,17 +76,22 @@
 #     app.run(debug=True, host='0.0.0.0', port=5000)
 
 
+import os
+from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from authentication import send_otp
 from db import db, connect
 from auth import signup, register
 
+load_dotenv()
+
 app = Flask(__name__)
 CORS(app)
 
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = os.environ.get('SQLALCHEMY_TRACK_MODIFICATIONS', 'False').lower() in ('true', '1', 't')
 
-app.config.from_pyfile('.env')
 db.init_app(app)
 
 with app.app_context():
