@@ -3,7 +3,7 @@ from db import connect
 from auth import signup, register
 from upload import upload  # Ensure this is used if needed
 from view_csv import view_csv
-from ai import analyze_data, chatbot
+from ai import chatbot, chatbot_analyze
 from flask_cors import CORS
 from authentication import send_otp
 
@@ -13,16 +13,12 @@ analyzed_data = None
 
 @app.route('/chat', methods=['POST'])
 def chat():
-    global analyzed_data
-    if analyzed_data is None:
-        return jsonify({"error": "Please analyze data first before chatting"}), 400
-    
     user_question = request.json.get('question')
     if not user_question:
         return jsonify({"error": "No question provided"}), 400
     
     try:
-        response = chatbot(analyzed_data, user_question)
+        response = chatbot(None, user_question)
         return jsonify({"response": response})
     except Exception as e:
         return jsonify({"error": f"Chat error: {str(e)}"}), 500
@@ -48,17 +44,18 @@ def upload_file():
     
     if 'file' not in request.files:
         return jsonify({"error": "No file uploaded"}), 400
-
+    print("file uploaded")
     file = request.files['file']
 
-  
+    print(file)
     if file.filename == '':
         return jsonify({"error": "No selected file"}), 400
 
    
     try:
         global analyzed_data
-        analyzed_data = analyze_data(file)
+        analyzed_data = chatbot_analyze(file)
+        print(analyzed_data)
     except Exception as e:
         return jsonify({"error": str(e)}), 500  # Handle any errors during analysis
 

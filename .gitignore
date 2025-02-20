@@ -15,7 +15,12 @@ __pycache__/
 
 # --- Production ---
 /build
-/frontend
+backend/ai.py
+backend/view_csv.py
+backend/upload.py
+backend/chart.py
+backend/config.py
+
 
 # --- Environment and miscellaneous files ---
 .env
