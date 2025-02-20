@@ -68,5 +68,22 @@ def upload_file():
 def view_csv_route():
     return view_csv()
 
+@app.route('/homepage_notification/send', methods=['POST'])
+def homepage_notification_send():
+    user_id = request.args.get('user_id')
+    message = request.args.get('message')
+    return homepage_notification_send(user_id, message)
+
+@app.route('/homepage_notification/get', methods=['GET'])
+def homepage_notification_get():
+    user_id = request.args.get('user_id')
+    return homepage_notification_get(user_id)
+
+@app.route('/homepage_notification/delete', methods=['DELETE'])
+def homepage_notification_delete():
+    user_id = request.args.get('user_id')
+    
+    return homepage_notification_delete(user_id)
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
