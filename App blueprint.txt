@@ -1,0 +1,14 @@
+1) Introduction animation - 4 slides - "Get Started" button
+2) Login page - number or email - disclaimer of privacy policy, terms & conditions
+3) OTP verification (automatic OTP filling) - resend OTP
+4) Select Country - Select City
+5) Add Home page - Select society name - Select Building - Select Flat - Select type of residency - Rental agreement
+6) Test notifications
+
+Modules:
+1) Home
+2) Community
+3) Homes (not familiar)
+4) Marketplace
+5) Services
+
