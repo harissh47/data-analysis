@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:frontend/Login/introduction_page.dart';
 import 'package:frontend/Login/login_page.dart';
 import 'package:frontend/Login/register_page.dart';
+
+import 'Navigation/main_navigation.dart';
  // Update the path if needed
 
 void main() {
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: PgIntroductionAnimationScreen(), // Directly loading the LoginPage PgIntroductionAnimationScreen()
+      home: const MainNavigation(), // Directly loading the LoginPage PgIntroductionAnimationScreen()
     );
   }
 }
