@@ -93,6 +93,7 @@ from authentication import send_otp
 from db import db, connect
 from auth import signup, register
 
+
 load_dotenv()
 
 app = Flask(__name__)
@@ -129,6 +130,12 @@ def health_check():
 def home():
     return connect()
 
+@app.route('/cleaning_service', methods=['POST'])
+
+def cleaning_service():
+
+    return cleaning_service()
+
 @app.route('/signup', methods=['POST'])
 def signup_route():
     return signup()
@@ -140,6 +147,11 @@ def register_route():
 @app.route('/send_otp', methods=['POST'])
 def send_otp_route():
     return send_otp(request.json.get('email'))
+
+
+@app.route('/tenant_details', methods=['POST'])
+def tenant_details():
+    return tenant_details()
 
 @app.route('/upload', methods=['POST'])
 def upload_file():

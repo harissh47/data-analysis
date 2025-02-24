@@ -10,10 +10,6 @@
 #     data = list(collection.find())
 #     return jsonify(data)
 
-<<<<<<< HEAD
-=======
-
->>>>>>> project/person2
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()

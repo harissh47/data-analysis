@@ -45,3 +45,34 @@ class Notification(db.Model):
     
     def __repr__(self):
         return f'<Notification {self.id} for User {self.user_id}>'
+
+class Tenant(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(100), unique=True, nullable=False)
+    phone = db.Column(db.String(20))
+    address = db.Column(db.String(200))
+    city = db.Column(db.String(100))
+    state = db.Column(db.String(100))
+    zip_code = db.Column(db.String(20))
+    country = db.Column(db.String(50))
+    tenant_type = db.Column(db.String(50))
+    tenant_status = db.Column(db.String(50))
+    tenant_start_date = db.Column(db.Date)
+    tenant_end_date = db.Column(db.Date)
+    family_members = db.Column(db.String(200))
+    number_of_members = db.Column(db.Integer)
+
+    def __repr__(self):
+        return f'<Tenant {self.name}>'
+
+from db import db
+
+class HouseCleaningService(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    house_number = db.Column(db.String(50), nullable=False)
+    service_time = db.Column(db.String(50))  # Optionally, convert to a datetime
+    service_type = db.Column(db.String(50))
+
+    def __repr__(self):
+        return f'<HouseCleaningService {self.house_number} - {self.service_type}>'

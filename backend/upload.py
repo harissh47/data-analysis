@@ -1,6 +1,7 @@
 from flask import request, jsonify
 import pandas as pd
 from db import collection  
+from db import db
 
 def upload():
     try:
