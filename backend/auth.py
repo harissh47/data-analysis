@@ -1,5 +1,6 @@
 from flask import request, jsonify
 from utils.helpers import is_valid_email, is_valid_phone
+from werkzeug.security import generate_password_hash, check_password_hash
 from user_model import User
 from db import db
 
@@ -46,13 +47,14 @@ def register():
             if admin_exists:
                 return jsonify({'message': 'Admin already exists'}), 400
             
+        password_hash = generate_password_hash(password)
         new_user = User(
             username=username,
             email=email,
-            password=password,
+            password_hash=password_hash,
             usertype=usertype
         )
-        new_user.set_password(password)
+
         db.session.add(new_user)
         db.session.commit()
         return jsonify({'message': 'User registered'}), 200
@@ -86,9 +88,9 @@ def login():
     if not email or not password:
         return jsonify({'error': 'Email and password are required'}), 400
 
-    user = User.query.filter_by(email=email).first()
+    user = User.query.filter_by(email=email).first()    
 
-    if user and user.check_password(password):  # Secure password check
+    if user and check_password_hash(user.password_hash, password):  # Secure password check
         return jsonify({'message': 'Login successful', 'usertype': user.usertype}), 200
     else:
         return jsonify({'error': 'Invalid email or password'}), 401

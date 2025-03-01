@@ -2,7 +2,7 @@
 
 # --- Dependencies ---
 # Node.js dependencies
-/node_modules/
+frontend/node_modules
 .pnp
 .pnp.js
 
@@ -15,7 +15,12 @@ __pycache__/
 
 # --- Production ---
 /build
-/frontend
+backend/ai.py
+backend/view_csv.py
+backend/upload.py
+backend/chart.py
+backend/config.py
+
 
 # --- Environment and miscellaneous files ---
 .env

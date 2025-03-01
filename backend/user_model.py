@@ -1,19 +1,45 @@
-from db import db
-from werkzeug.security import generate_password_hash, check_password_hash
 
+from datetime import datetime
+from db import db
+
+# User Model
 class User(db.Model):
-    __tablename__ = 'user_info' 
+    __tablename__ = 'users'
     
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(100), nullable=False, unique=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(150), nullable=False, unique=True)
-    password = db.Column(db.String(500), nullable=False)
-    usertype = db.Column(db.String(100), nullable=False)
+    password_hash = db.Column(db.String(500), nullable=False)
+    usertype = db.Column(db.String(20), default='user')
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    # Relationship to notifications
+    notifications = db.relationship('Notification', back_populates='user', lazy='dynamic', cascade='all, delete-orphan')
+    
+    def __repr__(self):
+        return f'<User {self.username}>'
 
-    # Method to set password (hashing)
-    def set_password(self, password):
-        self.password_hash = generate_password_hash(password)
-
-    # Method to check password
-    def check_password(self, password):
-        return check_password_hash(self.password_hash, password)
+# Notification Model
+class Notification(db.Model):
+    __tablename__ = 'notifications'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    message = db.Column(db.Text, nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    # Foreign key to users table
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    
+    # Relationship back to user
+    user = db.relationship('User', back_populates='notifications')
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'message': self.message,
+            'timestamp': self.timestamp.strftime('%Y-%m-%d %H:%M:%S')
+        }
+    
+    def __repr__(self):
+        return f'<Notification {self.id} for User {self.user_id}>'

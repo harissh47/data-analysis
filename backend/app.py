@@ -3,13 +3,12 @@ from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from authentication import send_otp
+from homepage_notification import homepage_notification_delete, homepage_notification_get, homepage_notification_send
 from db import db, connect
 from auth import login, signup, register
 from flask_migrate import Migrate  # Import Flask-Migrate
+from user_model import User, Notification
 
-# from upload import upload  # Ensure this is used if needed
-# from view_csv import view_csv
-# from ai import analyze_data, chatbot
 
 load_dotenv()
 
@@ -20,10 +19,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = os.environ.get('SQLALCHEMY_TRACK_MODIFICATIONS', 'False').lower() in ('true', '1', 't')
 
 db.init_app(app)
-migrate = Migrate(app, db)
 
-with app.app_context():
-    db.create_all()
+migrate = Migrate(app, db)
 
 # ------------------------- Routes -------------------------#
 @app.route('/health', methods=['GET'])
@@ -93,6 +90,25 @@ def send_otp_route():
 #         "message": "File uploaded successfully. AI is ready to chat!",
 #         "analyzed_data": analyzed_data  # Optionally return the analyzed data
 #     }), 200
+
+@app.route('/homepage_notification/send', methods=['POST'])
+def homepage_notification_send_route():
+    data = request.get_json()
+    user_id = data.get('user_id')
+    message = data.get('message')
+    return homepage_notification_send(user_id, message)
+
+@app.route('/homepage_notification/get', methods=['POST'])
+def homepage_notification_get_route():
+    data = request.get_json()
+    user_id = data.get('user_id')
+    return homepage_notification_get(user_id)
+
+@app.route('/homepage_notification/delete', methods=['DELETE'])
+def homepage_notification_delete_route():
+    data = request.get_json()
+    user_id = data.get('user_id')
+    return homepage_notification_delete(user_id)
 
 if __name__ == '__main__':
     app.run(debug=True)

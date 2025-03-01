@@ -4,18 +4,22 @@ import random
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import os
+import dotenv
+
+dotenv.load_dotenv()
 
 def send_otp(email_address):
-    if "@" not in email_address:
+    if not email_address or "@" not in email_address:
         return jsonify({"error": "Invalid email address"}), 400
     
     otp = random.randint(100000, 999999)
     
     # SMTP server configuration (update these for Gmail)
-    smtp_server = "smtp.example.com"  # Change this to smtp.gmail.com for Gmail
+    smtp_server = "smtp.gmail.com"  # Change this to smtp.gmail.com for Gmail
     smtp_port = 587
-    smtp_username = "your_email@example.com"  # Your Gmail address
-    smtp_password = "your_email_password"       # Your Gmail password (or app password)
+    smtp_username = os.getenv('MAIL_USERNAME')  # Your Gmail address
+    smtp_password = os.getenv('MAIL_PASSWORD')       # Your Gmail password (or app password)
     
     try:
         # Create the email message
