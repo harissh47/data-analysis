@@ -91,6 +91,112 @@ def send_otp_route():
 #         "analyzed_data": analyzed_data  # Optionally return the analyzed data
 #     }), 200
 
+# @app.route('/view_csv', methods=['GET'])
+# def view_csv_route():
+#     return view_csv()
+
+# if __name__ == '__main__':
+#     app.run(debug=True, host='0.0.0.0', port=5000)
+
+
+import os
+from dotenv import load_dotenv
+from flask import Flask, jsonify, request
+
+from flask_cors import CORS
+from authentication import send_otp
+from db import db, connect
+from auth import signup, register
+
+
+load_dotenv()
+
+app = Flask(__name__)
+CORS(app)
+
+
+@app.route('/chat', methods=['POST'])
+def chat():
+    user_question = request.json.get('question')
+    if not user_question:
+        return jsonify({"error": "No question provided"}), 400
+    
+    try:
+        response = chatbot(None, user_question)
+        return jsonify({"response": response})
+    except Exception as e:
+        return jsonify({"error": f"Chat error: {str(e)}"}), 500
+
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = os.environ.get('SQLALCHEMY_TRACK_MODIFICATIONS', 'False').lower() in ('true', '1', 't')
+
+db.init_app(app)
+
+with app.app_context():
+    db.create_all()
+
+# ------------------------- Routes -------------------------#
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({"status": "Server is running"}), 200
+
+
+@app.route('/connect')
+def home():
+    return connect()
+
+@app.route('/cleaning_service', methods=['POST'])
+
+def cleaning_service():
+
+    return cleaning_service()
+
+@app.route('/signup', methods=['POST'])
+def signup_route():
+    return signup()
+
+@app.route('/register', methods=['POST'])
+def register_route():
+    return register()
+
+@app.route('/send_otp', methods=['POST'])
+def send_otp_route():
+    return send_otp(request.json.get('email'))
+
+
+@app.route('/tenant_details', methods=['POST'])
+def tenant_details():
+    return tenant_details()
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    
+    if 'file' not in request.files:
+        return jsonify({"error": "No file uploaded"}), 400
+    print("file uploaded")
+    file = request.files['file']
+
+    print(file)
+    if file.filename == '':
+        return jsonify({"error": "No selected file"}), 400
+
+   
+    try:
+        global analyzed_data
+        analyzed_data = chatbot_analyze(file)
+        print(analyzed_data)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500  # Handle any errors during analysis
+
+    return jsonify({
+        "message": "File uploaded successfully. AI is ready to chat!",
+        "analyzed_data": analyzed_data  # Optionally return the analyzed data
+    }), 200
+
+@app.route('/view_csv', methods=['GET'])
+def view_csv_route():
+    return view_csv()
+
 @app.route('/homepage_notification/send', methods=['POST'])
 def homepage_notification_send_route():
     data = request.get_json()
