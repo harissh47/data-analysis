@@ -1,0 +1,2 @@
+C:/Users/019130/Desktop/MyGate/frontend/android/app/.cxx/Debug/1g5r1m1b/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/019130/Desktop/MyGate/frontend/android/app/.cxx/Debug/1g5r1m1b/armeabi-v7a/CMakeFiles/rebuild_cache.dir

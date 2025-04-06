@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/Login/introduction_page.dart';
-import 'package:frontend/Login/login_page.dart';
-import 'package:frontend/Login/register_page.dart';
+
+
+import 'presentation/pages/introduction_animation/introduction_page.dart';
  // Update the path if needed
 
 void main() {
